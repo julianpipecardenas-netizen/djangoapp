@@ -11,6 +11,6 @@
 {% if respuesta_ia %}
 <hr>
 <h3>Respuesta:</h3>
-<p>{{ respuesta_ia }}</p>
+<p>{{ respuesta_ia|safe }}</p>
 {% endif %}
 {% endblock %}
