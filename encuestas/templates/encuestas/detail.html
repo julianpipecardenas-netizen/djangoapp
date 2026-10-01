@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}{{ producto.nombre }}{% endblock %}
+{% block content %}
+<h1>{{ producto.nombre }}</h1>
+<ul>
+{% for opcion in producto.opciones.all %}
+    <li><a href="{% url 'encuestas:vote' producto.id opcion.id %}">Votar: {{ opcion.texto_opcion }}</a></li>
+{% endfor %}
+</ul>
+<p><a href="{% url 'encuestas:results' producto.id %}">Ver resultados</a></p>
+{% endblock %}

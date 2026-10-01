@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Encuesta de Satisfacción{% endblock %}</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #fdf6ec; color: #3e2723; margin: 0; padding: 0; }
+        nav { background-color: #5d4037; padding: 15px; text-align: center; }
+        nav a { color: #fdf6ec; text-decoration: none; margin: 0 15px; font-weight: bold; }
+        nav a:hover { text-decoration: underline; }
+        .contenedor { max-width: 600px; margin: 40px auto; padding: 20px; background-color: #fff; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); text-align: center; }
+        .contenedor ol, .contenedor ul { text-align: left; padding-left: 25px; }
+        .contenedor strong { color: #5d4037; }
+        li { padding: 10px; border-bottom: 1px solid #eee; }
+        a { color: #6d4c41; }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="{% url 'encuestas:index' %}">Inicio</a>
+        <a href="{% url 'categorias:lista' %}">Categorías</a>
+        <a href="{% url 'encuestas:comentarios' %}">Comentarios</a>
+        <a href="{% url 'encuestas:microservicios' %}">Microservicios</a>
+        <a href="{% url 'encuestas:preguntar_ia' %}">Preguntar a la IA</a>
+    </nav>
+    <div class="contenedor">
+        {% block content %}{% endblock %}
+    </div>
+        <script>
+        document.querySelectorAll("form").forEach(function (formulario) {
+            formulario.addEventListener("submit", function () {
+                formulario.querySelectorAll("button[type='submit']").forEach(function (boton) {
+                    boton.disabled = true;
+                });
+                var botonClicado = document.activeElement;
+                if (botonClicado && botonClicado.tagName === "BUTTON") {
+                    botonClicado.innerText = "Enviando...";
+                }
+            });
+        });
+    </script>
+</body>
+</html>

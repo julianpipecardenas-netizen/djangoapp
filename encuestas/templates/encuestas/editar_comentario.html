@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Editar comentario{% endblock %}
+{% block content %}
+<h1>Editar comentario</h1>
+{% if comentario %}
+<form method="post">
+    {% csrf_token %}
+    <p><label>Microservicio a usar:</label><br>
+        <select name="lenguaje">
+            <option value="java" {% if lenguaje == "java" %}selected{% endif %}>Java</option>
+            <option value="node" {% if lenguaje == "node" %}selected{% endif %}>Node.js</option>
+            <option value="php" {% if lenguaje == "php" %}selected{% endif %}>PHP</option>
+        </select>
+    </p>
+    <p><label>Nombre:</label><br>
+        <input type="text" name="nombre_cliente" value="{{ comentario.nombre_cliente }}" required></p>
+    <p><label>Comentario:</label><br>
+        <textarea name="comentario" required>{{ comentario.comentario }}</textarea></p>
+    <p><label>Calificación (1 a 5):</label><br>
+        <input type="number" name="calificacion" min="1" max="5" value="{{ comentario.calificacion }}" required></p>
+    <button type="submit" name="guardar">Guardar cambios</button>
+    <button type="submit" name="cancelar">Cancelar</button>
+</form>
+{% else %}
+<p>No se pudo cargar el comentario.</p>
+{% endif %}
+{% endblock %}

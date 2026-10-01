@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}{{ categoria.nombre }}{% endblock %}
+{% block content %}
+<h1>{{ categoria.nombre }}</h1>
+<ul>
+{% for producto in productos %}
+    <li><a href="{% url 'encuestas:detail' producto.id %}">{{ producto.nombre }}</a></li>
+{% endfor %}
+</ul>
+{% endblock %}

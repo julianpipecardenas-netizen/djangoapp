@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Agregar comentario{% endblock %}
+{% block content %}
+<h1>Deja tu comentario</h1>
+<form method="post">
+    {% csrf_token %}
+    <p><label>Microservicio a usar:</label><br>
+        <select name="lenguaje">
+            <option value="java" {% if lenguaje == "java" %}selected{% endif %}>Java</option>
+            <option value="node" {% if lenguaje == "node" %}selected{% endif %}>Node.js</option>
+            <option value="php" {% if lenguaje == "php" %}selected{% endif %}>PHP</option>
+        </select>
+    </p>
+    <p><label>Tu nombre:</label><br><input type="text" name="nombre_cliente" required></p>
+    <p><label>Comentario:</label><br><textarea name="comentario" required></textarea></p>
+    <p><label>Calificación (1 a 5):</label><br><input type="number" name="calificacion" min="1" max="5" value="5" required></p>
+    <button type="submit">Enviar</button>
+</form>
+{% endblock %}

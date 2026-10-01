@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Comentarios{% endblock %}
+{% block content %}
+<h1>Comentarios de clientes</h1>
+<p><small>Fuente de datos: {{ fuente }}</small></p>
+<p><a href="{% url 'encuestas:agregar_comentario' %}">+ Agregar comentario</a></p>
+<ul>
+{% for c in comentarios %}
+    <li>
+        {{ c.nombre_cliente }} ({{ c.calificacion }}/5): {{ c.comentario }}
+        <br>
+        <a href="{% url 'encuestas:editar_comentario' c.id %}">Editar</a> |
+        <a href="{% url 'encuestas:eliminar_comentario' c.id %}">Eliminar</a>
+    </li>
+{% endfor %}
+</ul>
+{% endblock %}

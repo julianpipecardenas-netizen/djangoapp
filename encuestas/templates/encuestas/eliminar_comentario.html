@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Eliminar comentario{% endblock %}
+{% block content %}
+<h1>¿Eliminar este comentario?</h1>
+<form method="post">
+    {% csrf_token %}
+    <p><label>Microservicio a usar:</label><br>
+        <select name="lenguaje">
+            <option value="java" {% if lenguaje == "java" %}selected{% endif %}>Java</option>
+            <option value="node" {% if lenguaje == "node" %}selected{% endif %}>Node.js</option>
+            <option value="php" {% if lenguaje == "php" %}selected{% endif %}>PHP</option>
+        </select>
+    </p>
+    <button type="submit" name="confirmar">Sí, eliminar</button>
+    <button type="submit" name="cancelar">Cancelar</button>
+</form>
+{% endblock %}

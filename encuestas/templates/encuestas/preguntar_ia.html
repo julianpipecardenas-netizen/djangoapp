@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Preguntar a la IA{% endblock %}
+{% block content %}
+<h1>Pregúntale a la IA sobre la encuesta</h1>
+<form method="post">
+    {% csrf_token %}
+    <textarea name="pregunta" placeholder="Ej: ¿Cómo puedo mejorar la satisfacción de mis clientes?" required></textarea>
+    <br><br>
+    <button type="submit">Preguntar</button>
+</form>
+{% if respuesta_ia %}
+<hr>
+<h3>Respuesta:</h3>
+<p>{{ respuesta_ia }}</p>
+{% endif %}
+{% endblock %}

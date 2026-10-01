@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Microservicios{% endblock %}
+{% block content %}
+<h1>Demostración de microservicios</h1>
+<p>Cada botón usa un microservicio distinto, escrito en un lenguaje diferente, todos conectados a la misma base de datos en Supabase.</p>
+
+<h3>🟢 Python (Flask) — Lectura principal</h3>
+<p>Se usa automáticamente al entrar a <a href="{% url 'encuestas:comentarios' %}">Comentarios</a>.</p>
+
+<h3>🟠 Java (Spring Boot) — Insertar, Actualizar, Eliminar</h3>
+<p>Seleccionable desde los formularios de agregar/editar/eliminar en <a href="{% url 'encuestas:comentarios' %}">Comentarios</a>.</p>
+
+<h3>🟣 Node.js — Insertar, Actualizar, Eliminar</h3>
+<p>Seleccionable igual, desde el mismo lugar.</p>
+
+<h3>🔵 PHP — Insertar, Actualizar, Eliminar</h3>
+<p>Seleccionable igual, desde el mismo lugar.</p>
+
+<h3>🟢 Node.js (respaldo) — Resiliencia de lectura</h3>
+<p>Se activa automáticamente si el microservicio de Python falla al consultar comentarios.</p>
+{% endblock %}

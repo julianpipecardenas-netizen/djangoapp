@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}Resultados{% endblock %}
+{% block content %}
+<h1>Resultados: {{ producto.nombre }}</h1>
+<ul>
+{% for opcion in producto.opciones.all %}
+    <li>{{ opcion.texto_opcion }} — {{ opcion.votos }} voto{{ opcion.votos|pluralize }}</li>
+{% endfor %}
+</ul>
+<p><a href="{% url 'encuestas:index' %}">Volver al inicio</a></p>
+{% endblock %}

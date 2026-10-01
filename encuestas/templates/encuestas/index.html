@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Inicio{% endblock %}
+{% block content %}
+<h1>Productos en encuesta</h1>
+{% if lista_productos %}
+    <ul>
+    {% for producto in lista_productos %}
+        <li><a href="{% url 'encuestas:detail' producto.id %}">{{ producto.nombre }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No hay productos en encuesta.</p>
+{% endif %}
+{% endblock %}
