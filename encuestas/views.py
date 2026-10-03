@@ -10,6 +10,7 @@ from .models import Producto, Opcion
 GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
 
 MICROSERVICIOS = {
+    "python": "https://microservicio-cafe.onrender.com",
     "java": "https://microservicio-java.onrender.com",
     "node": "https://microservicio-node.onrender.com",
     "php": "https://microservicio-php.onrender.com",
