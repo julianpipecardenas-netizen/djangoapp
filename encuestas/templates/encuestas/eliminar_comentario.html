@@ -6,6 +6,7 @@
     {% csrf_token %}
     <p><label>Microservicio a usar:</label><br>
         <select name="lenguaje">
+            <option value="python" {% if lenguaje == "python" %}selected{% endif %}>Python</option>
             <option value="java" {% if lenguaje == "java" %}selected{% endif %}>Java</option>
             <option value="node" {% if lenguaje == "node" %}selected{% endif %}>Node.js</option>
             <option value="php" {% if lenguaje == "php" %}selected{% endif %}>PHP</option>
